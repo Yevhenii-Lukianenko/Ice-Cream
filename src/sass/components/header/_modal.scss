@@ -1,0 +1,326 @@
+/* Стили для подложки */
+
+.overlay {
+  /* Скрываем подложку  */
+  opacity: 0;
+  visibility: hidden;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 20;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+}
+
+/* Стили для модальных окон */
+
+.modal {
+  /* Скрываем окна  */
+
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  overflow-y: auto;
+  transition: all 0.8s ease 0s;
+
+  /*  Установаем ширину окна  */
+  width: 280px;
+  @include tablet {
+    width: 568px;
+  }
+
+  /*  Центрируем и задаем z-index */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30; /* Должен быть выше чем у подложки*/
+
+  /*  Побочные стили   */
+  box-shadow: 0 3px 10px -0.5px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  padding: 28px;
+  background-color: $secondary-font-color;
+  border: 2px solid $accent-color;
+  border-radius: 10px;
+  transition: opacity 300ms ease-in-out, visibility 300ms ease-in-out;
+
+  @include tablet {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+/* Стили для заголовка */
+.modal__title {
+  font-family: $secondary-font;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Стили для активных классов подложки и окна */
+
+.modal.active,
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Стили для кнопки закрытия */
+
+.modal__button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: none;
+  background-color: transparent;
+}
+
+.modal__cross {
+  width: 20px;
+  height: 20px;
+
+  fill: $primary-font-color;
+  transition: fill 300ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    fill: $btn-hover-bg;
+  }
+}
+
+// .header-modal__title {
+//   color: $primary-font-color;
+
+//   font-family: $secondary-font;
+//   font-size: 16px;
+//   line-height: 1.4;
+
+//   @include tablet {
+//     font-size: 20px;
+//   }
+// }
+
+// // ======= form styles
+// .header-modal__form {
+//   display: flex;
+//   flex-direction: column;
+
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// // ======= checkbox global styles
+
+// .checkbox {
+//   display: flex;
+//   flex-wrap: wrap;
+//   flex-direction: column;
+//   justify-content: center;
+
+//   @include tablet {
+//     flex-direction: row;
+//     gap: 32px;
+//   }
+// }
+
+// .checkbox__item {
+//   display: flex;
+//   justify-content: center;
+
+//   position: relative;
+//   margin-top: 83px;
+// }
+
+// .checkbox__custom {
+//   display: block;
+
+//   width: 132px;
+//   height: 135px;
+
+//   border-radius: 15px;
+// }
+
+// .checkbox__name {
+//   position: absolute;
+//   bottom: 20px;
+//   left: 50%;
+//   transform: translateX(-50%);
+
+//   width: max-content;
+
+//   color: $primary-font-color;
+
+//   font-weight: 700;
+//   font-size: 16px;
+//   line-height: 1.2;
+//   letter-spacing: 0.04em;
+//   text-transform: uppercase;
+// }
+
+// // first checkbox
+// .checkbox-first {
+//   &::before {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+//     background: linear-gradient(
+//         0deg,
+//         rgba(156, 190, 143, 0.7),
+//         rgba(156, 190, 143, 0.7)
+//       ),
+//       #d9d9d9;
+//     box-shadow: 0px 5.26027px 19.726px rgba(10, 136, 23, 0.25);
+//     background-repeat: no-repeat;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -50px;
+//   }
+//   &::after {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+
+//     background-image: url(../images/header/modal/ice-cream1.png);
+//     @include retina2x {
+//       background-image: url(../images/header/modal/ice-cream2_2x.png);
+//     }
+
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -57px;
+//   }
+// }
+
+// .checkbox--green {
+//   border: 2px solid #96af8c;
+// }
+
+// .checkbox__input:checked + .checkbox--green {
+//   background-color: $card-bg-color1;
+// }
+
+// // second checkbox
+// .checkbox-second {
+//   &::before {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+//     background: linear-gradient(
+//         0deg,
+//         rgba(248, 210, 78, 0.7),
+//         rgba(248, 210, 78, 0.7)
+//       ),
+//       #d9d9d9;
+//     box-shadow: 0px 5.26027px 19.726px rgba(153, 114, 23, 0.25);
+//     background-repeat: no-repeat;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -50px;
+//   }
+//   &::after {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+
+//     background-image: url(../images/header/modal/ice-cream2.png);
+//     @include retina2x {
+//       background-image: url(../images/header/modal/ice-cream2_2x.png);
+//     }
+
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -57px;
+//   }
+// }
+
+// .checkbox--yellow {
+//   border: 2px solid #efd478;
+// }
+
+// .checkbox__input:checked + .checkbox--yellow {
+//   background-color: $card-bg-color2;
+// }
+
+// // third checkbox
+// .checkbox-third {
+//   &::before {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+//     background: linear-gradient(
+//         0deg,
+//         rgba(213, 117, 63, 0.7),
+//         rgba(213, 117, 63, 0.7)
+//       ),
+//       #d9d9d9;
+//     box-shadow: 0px 5.26027px 19.726px rgba(0, 0, 0, 0.25);
+//     background-repeat: no-repeat;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -50px;
+//   }
+//   &::after {
+//     content: '';
+//     width: 132px;
+//     height: 132px;
+
+//     background-image: url(../images/header/modal/ice-cream3.png);
+//     @include retina2x {
+//       background-image: url(../images/header/modal/ice-cream3_2x.png);
+//     }
+
+//     background-repeat: no-repeat;
+//     background-size: contain;
+//     border: none;
+//     border-radius: 50%;
+//     display: block;
+//     position: absolute;
+//     top: -57px;
+//   }
+// }
+
+// .checkbox--orange {
+//   border: 2px solid #d6936d;
+// }
+
+// .checkbox__input:checked + .checkbox--orange {
+//   background-color: $card-bg-color3;
+// }
+
+// // ======== inputs styles
+
+// .header-modal__inputs {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 16px;
+
+//   margin-top: 40px;
+//   margin-bottom: 32px;
+//   margin-left: auto;
+//   margin-right: auto;
+
+//   @include tablet {
+//     width: 368px;
+//   }
+// }
